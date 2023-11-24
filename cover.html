@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebGIS dengan Bootstrap</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    />
+    
+    <style>
+      body {
+        background-image: url("https://wallpapertag.com/wallpaper/full/4/d/7/317105-gorgerous-food-background-2990x1918-for-mobile-hd.jpg"); /* Ganti URL gambar background dengan URL yang diinginkan */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        color: #090909; /* Ganti warna teks agar sesuai dengan background */
+      }
+      h2 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 36px;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+
+      .icon-utensils {
+        color: #e44d26; /* Ganti dengan warna ikon yang diinginkan */
+        font-size: 48px;
+        margin-right: 10px;
+      }
+      h5 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 25px;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href=""
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wfsgeoserver1.html">Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="acara9.html">Coordinate</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="info.html">Info</a>
+          </li>
+          <!-- Tambahkan menu lain sesuai kebutuhan -->
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <div class="container mt-4 text-center">
+      <!-- Menambahkan kelas mx-auto untuk tata letak tengah -->
+      <h2><i class="fa-solid fa-utensils"></i> MAKAN LUR MAKAN</h2>
+      <p>
+        Kabupaten Sleman merupakan salah satu kabupaten di Provinsi Daerah
+        Istimewa Yogyakarta. Kabupaten Sleman merupakan lokasi dari berbagai
+        kampus ternama di Indonesia, seperti Universitas Gadjah Mada, Univertas
+        Negeri Yogyakarta, Universitas Islam Indonesia, dsb.
+      </p>
+    <hr/>
+
+      <div class="row">
+        <div class="col-md-6">
+      <!-- Menambahkan gambar lokasi rumah makan di Sleman -->
+      <h5>Rumah Makan Gudeg Yu Djum</h5>
+      <p align ="justify">Rumah makan Gudeg Yu Djum merupakan rumah makan yang menyediakan gudeg khas Yogyakarta yang sangat legendaris.Gudeg yang disajikan merupakan jenis gudeg yang tidak berkuah dengan rasa yang dominan manis. Proses produksi dari Gudeg Yu Djum masih menggunakan kayu bakar. Gudeg Yu Djum dirintis oleh Ibu Djuwariyah sejak tahun 2951.</p>
+      <img
+        src="https://gastronomyaficionado.files.wordpress.com/2013/07/gudeg-yu-djum-exterior.jpg?w=1620"
+        alt="Lokasi Rumah Makan"
+        style="width: 100%; height: auto"
+        onclick="redirectRumahMakan()"
+      />
+    </div>
+    <div class="col-md-6">
+      <h5>Seafood Pak Purwanto</h5>
+      <p align="justify">Warung Seafood Pak Purwanto berlokasi di Jl. Kaliurang KM. 4, Caturtungga, Depo, Karang Malang , Sinduadi, Mlati, Kabupaten Sleman. Warung Seafood Pak Purwanto buka dari pukul 18.00 - 23.30 WIB. Warung Seafood Pak Purwanto menyajikan berbagai menu seafood dengan harga kaki lima. Misalnya, menu tomyan seafood di warung ini dibandrol dengan harga Rp30.000, sedangkan hotplate seafood dibandrol dengan harga Rp32.000</p>
+      <img
+        src="https://cdn.wisata.app/diary/2155a0b1-9ead-401d-8f06-a9e2294ec66c_xs.jpg"
+        alt="Lokasi Rumah Makan"
+        style="width: 95%; height: auto"
+        onclick="redirectSeafood()"
+      />
+    </div>
+    
+    <hr/>
+    <div class="col-md-6">
+      <h5>Bubur Wengi Mbak Watik</h5>
+      <p align="justify">Warung Bubur Wengi Mbak Watik menyajikan menu yang dapat dibandrol mulai harga Rp26.000. Porsi yang disajikan oleh Warung Bubur Wengi Mbak Watik adalah porsi yang besar dengan rasa masakan yang endulita jos sekali. Warung Bubur Wengi Mbak Watik menyajikan menu makanan ndeso yang membuat kangen seperti gembus kecap oseng yang disajikan dengan rasa pedas.</p>
+      <img
+        src="https://th.bing.com/th/id/OIP.yS7WVbegINPzz4_smjvCxwHaEL?rs=1&pid=ImgDetMain"
+        alt="Lokasi Rumah Makan"
+        style="width: 100%; height: auto"
+        onclick="redirectBubur()"
+      />
+    </div>
+    <div class="col-md-6">
+      <h5>The Waroeng of Raminten</h5>
+      <p align="justify">The Waroeng of Raminten merupakan warung makan yang unik yang menjadi salah satu ikon kuliner di Yogyakarta sehingga tak heran jika selalu ramai pengunjung. Keunikan dari The Waroeng of Raminten dapat dilihat dari interior warungnya yang menarik. Misalnya, furnitur warung yang disajikan dalam suasana Jawa yang kental dengan harum dupa bercampur bunga mawar.</p>
+      <img
+        src="https://th.bing.com/th/id/R.ee4c46f395466b5847b7c03df0ca6307?rik=p8dhlkVRcA5icA&riu=http%3a%2f%2ffs.genpi.co%2fuploads%2fnews%2f2018%2f04%2f27%2f68f4ce95101f0ff81178fc20cf462257.jpeg&ehk=RxcAGOXb3eKqaQhnigkqRcXH%2bnUNmrF7L%2bpfJ86adl8%3d&risl=&pid=ImgRaw&r=0"
+        alt="Lokasi Rumah Makan"
+        style="width: 97.8%; height: auto"
+        onclick="redirectRaminten()"
+      />
+    </div>
+
+    <hr/>
+    <div class="col-md-6">
+      <h5>Warung Kebon Nasi Bakar</h5>
+      <p></p>
+      <img
+        src="https://diskon.com/images/dito/IMG_20150522_130804.jpg"
+        alt="Lokasi Rumah Makan"
+        style="width: 100%; height: auto"
+        onclick="redirectKebon()"
+      />
+    </div>
+    <div class="col-md-6">
+      <h5>Tora Tora Restaurant (Japanese Cuisine)</h5>
+      <p></p>
+      <img
+        src="https://cdn.wisata.app/diary/48a360d0-c9a5-466f-93ad-a2d300104fb0_sm.jpg"
+        alt="Lokasi Rumah Makan"
+        style="width: 100%; height: auto"
+        onclick="redirectTora()"
+      />
+    </div>
+    </div>
+
+    <!-- Bootstrap JS (optional, for certain components) -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+      integrity="sha384-dJy0YKJT5u9KqzrERXRp6MlWo5Nq9DImKC6D5fghAfZwA"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Script Google Maps API -->
+    <script>
+      function redirectGoogleMaps() {
+        // Ganti koordinat sesuai dengan koordinat peta Anda
+        var latitude = -6.2088;
+        var longitude = 106.8456;
+
+        // Buka Google Maps dengan lokasi yang ditentukan
+        window.location.href = `https://www.google.com/maps/place/${latitude},${longitude}`;
+      }
+
+      // Script untuk mengalihkan ke Google Maps saat gambar lokasi rumah makan diklik
+      function redirectRumahMakan() {
+        // Ganti koordinat rumah makan sesuai kebutuhan
+        var rumahMakanLatitude = -7.765289979102765;
+        var rumahMakanLongitude = 110.38039942489843;
+
+        // Buka Google Maps dengan lokasi rumah makan yang ditentukan
+        window.location.href = `https://www.google.com/maps/place/${rumahMakanLatitude},${rumahMakanLongitude}`;
+      }
+      function redirectBubur() {
+        // Ganti koordinat rumah makan sesuai kebutuhan
+        var rumahMakanLatitude = -7.722802505804503;
+        var rumahMakanLongitude = 110.29813452015055;
+
+        // Buka Google Maps dengan lokasi rumah makan yang ditentukan
+        window.location.href = `https://www.google.com/maps/place/${rumahMakanLatitude},${rumahMakanLongitude}`;
+      }
+      function redirectRaminten() {
+        // Ganti koordinat rumah makan sesuai kebutuhan
+        var rumahMakanLatitude = -7.6760442778649995;
+        var rumahMakanLongitude = 110.41696857401088;
+
+        // Buka Google Maps dengan lokasi rumah makan yang ditentukan
+        window.location.href = `https://www.google.com/maps/place/${rumahMakanLatitude},${rumahMakanLongitude}`;
+      }
+      function redirectKebon() {
+        // Ganti koordinat rumah makan sesuai kebutuhan
+        var rumahMakanLatitude = -7.758795446467788;
+        var rumahMakanLongitude = 110.38210301698193;
+
+        // Buka Google Maps dengan lokasi rumah makan yang ditentukan
+        window.location.href = `https://www.google.com/maps/place/${rumahMakanLatitude},${rumahMakanLongitude}`;
+      }
+      function redirectTora() {
+        // Ganti koordinat rumah makan sesuai kebutuhan
+        var rumahMakanLatitude = -7.76590170456482;
+        var rumahMakanLongitude = 110.37953311805391;
+
+        // Buka Google Maps dengan lokasi rumah makan yang ditentukan
+        window.location.href = `https://www.google.com/maps/place/${rumahMakanLatitude},${rumahMakanLongitude}`;
+      }
+    </script>
+  </body>
+</html>

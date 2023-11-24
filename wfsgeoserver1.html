@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Leaflet Map</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <!-- Search CSS Library -->
+    <link
+      rel="stylesheet"
+      href="assets/plugin/leaflet-search/leaflet-search.css"
+    />
+
+    <!-- Geolocation CSS Library for Plugin -->
+    <link
+      rel="stylesheet"
+      href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css"
+    />
+
+    <!-- Leaflet Mouse Position CSS Library -->
+    <link
+      rel="stylesheet"
+      href="assets/plugin/leaflet-mouseposition/L.Control.MousePosition.css"
+    />
+
+    <!-- Leaflet Measure CSS Library -->
+    <link
+      rel="stylesheet"
+      href="assets/plugin/leaflet-measure/leaflet-measure.css"
+    />
+
+    <!-- EasyPrint CSS Library -->
+    <link
+      rel="stylesheet"
+      href="assets/plugin/leaflet-easyprint/easyPrint.css"
+    />
+
+    <!-- Marker Cluster -->
+    <link
+      rel="stylesheet"
+      href="assets/plugin/leaflet-markercluster/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/plugin/leaflet-markercluster/MarkerCluster.Default.css"
+    />
+
+    <!--Routing-->
+    <link
+      rel="stylesheet"
+      href="assets/plugin/leaflet-routing/leaflet-routing-machine.css"
+    />
+
+    <style>
+      #map {
+        height: 100vh;
+      }
+      /* Background pada Judul */
+      *.info {
+        padding: 6px 8px;
+        font: 14px/16px Arial, Helvetica, sans-serif;
+        background: white;
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        text-align: center;
+      }
+      .info h2 {
+        margin: 0 0 5px;
+        color: #777;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Search JavaScript Library -->
+    <script src="assets/plugin/leaflet-search/leaflet-search.js"></script>
+
+    <!-- Geolocation Javascript Library -->
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
+
+    <!-- Leaflet Mouse Position JavaScript Library -->
+    <script src="assets/plugin/leaflet-mouseposition/L.Control.MousePosition.js"></script>
+
+    <!-- Leaflet Measure JavaScript Library -->
+    <script src="assets/plugin/leaflet-measure/leaflet-measure.js"></script>
+
+    <!-- EasyPrint JavaScript Library -->
+    <script src="assets/plugin/leaflet-easyprint/leaflet.easyPrint.js"></script>
+
+    <!-- Marker Cluster -->
+    <script src="assets/plugin/leaflet-markercluster/leaflet.markercluster.js"></script>
+    <script src="assets/plugin/leaflet-markercluster/leaflet.markercluster-src.js"></script>
+
+    <!--Routing-->
+    <script src="assets/plugin/leaflet-routing/leaflet-routing-machine.js"></script>
+    <script src="assets/plugin/leaflet-routing/leaflet-routing-machine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <div class="alert alert-info">
+      <strong>WEBGIS BY ASMARINA NURJANAH (22/494711/SV/20896)</strong>
+    </div>
+
+    <script>
+      var map = L.map("map").setView([-7.7956, 110.3695], 10);
+
+      /* Judul dan Subjudul */
+      var title = new L.Control();
+      title.onAdd = function (map) {
+        this._div = L.DomUtil.create("div", "info");
+        this.update();
+        return this._div;
+      };
+      title.update = function () {
+        this._div.innerHTML =
+          "<h2>PERSEBARAN RUMAH MAKAN MURAH UNTUK MAHASISWA RANTAU DI KABUPATEN SLEMAN";
+      };
+      title.addTo(map);
+
+      // Basemap
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      var basemap1 = L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          attribution:
+            '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="DIVSIGUGM" target="_blank">DIVSIG UGM</a>',
+        }
+      );
+
+      var basemap2 = L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+        {
+          attribution:
+            'Tiles &copy; Esri | <a href="Latihan WebGIS" target="_blank">DIVSIG UGM</a>',
+        }
+      );
+
+      var basemap3 = L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        {
+          attribution:
+            'Tiles &copy; Esri | <a href="Lathan WebGIS" target="_blank">DIVSIG UGM</a>',
+        }
+      );
+
+      var basemap4 = L.tileLayer(
+        "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
+        {
+          attribution:
+            '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+        }
+      );
+
+      basemap4.addTo(map);
+
+      var baseMaps = {
+        OpenStreetMap: basemap1,
+        "Esri World Street": basemap2,
+        "Esri Imagery": basemap3,
+        "Stadia Dark Mode": basemap4,
+      };
+
+      L.control.layers(baseMaps).addTo(map);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      // Create a GeoJSON layer for polygon data
+      var wfsgeoserver1 = L.geoJson(null, {
+        style: function (feature) {
+          // Adjust this function to define styles based on your polygon properties
+          var value = feature.properties.jumlah; // Change this to your actual property name
+          return {
+            fillColor: getColor(value),
+            weight: 2,
+            opacity: 1,
+            color: "red",
+            dashArray: "3",
+            fillOpacity: 0.7,
+          };
+        },
+        onEachFeature: function (feature, layer) {
+          // Adjust the popup content based on your polygon properties
+          var content =
+            "Kecamatan: " +
+            feature.properties.kecamatan +
+            "<br>" +
+            "Jumlah: " +
+            feature.properties.jumlah +
+            "<br>";
+
+          layer.bindPopup(content);
+        },
+      });
+
+      // Fetch GeoJSON data from geoserver.php
+      $.getJSON("wfsgeoserver1.php", function (data) {
+        wfsgeoserver1.addData(data);
+        wfsgeoserver1.addTo(map);
+        map.fitBounds(wfsgeoserver1.getBounds());
+      });
+
+      /* Image Watermark */
+      L.Control.Watermark = L.Control.extend({
+        onAdd: function (map) {
+          var img = L.DomUtil.create("img");
+          img.src = "assets/img/logo/LOGO_SIG_BLUE.png";
+          img.style.width = "200px";
+          return img;
+        },
+      });
+
+      L.control.watermark = function (opts) {
+        return new L.Control.Watermark(opts);
+      };
+
+      L.control.watermark({ position: "bottomright" }).addTo(map);
+
+      /* Image Legend */
+      L.Control.Legend = L.Control.extend({
+        onAdd: function (map) {
+          var img = L.DomUtil.create("img");
+          img.src = "assets/img/legenda/LEGENDA2.png";
+          img.style.width = "300px";
+          return img;
+        },
+      });
+      L.control.Legend = function (opts) {
+        return new L.Control.Legend(opts);
+      };
+      L.control.Legend({ position: "bottomleft" }).addTo(map);
+
+      // Plugin Search
+      var searchControl = new L.Control.Search({
+        position: "topleft",
+        layer: wfsgeoserver1, //Nama variabel layer
+        propertyName: "kecamatan", //Field untuk pencarian
+        marker: false,
+        moveToLocation: function (latlng, title, map) {
+          var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+          map.setView(latlng, zoom);
+        },
+      });
+      searchControl
+        .on("search:locationfound", function (e) {
+          e.layer.setStyle({
+            fillColor: "#ffff00",
+            color: "#0000ff",
+          });
+        })
+        .on("search:collapse", function (e) {
+          featuresLayer.eachLayer(function (layer) {
+            featuresLayer.resetStyle(layer);
+          });
+        });
+      map.addControl(searchControl);
+      /*Plugin Geolocation */
+      var locateControl = L.control
+        .locate({
+          position: "topleft",
+          drawCircle: true,
+          follow: true,
+          setView: true,
+          keepCurrentZoomLevel: false,
+          markerStyle: {
+            weight: 1,
+            opacity: 0.8,
+            fillOpacity: 0.8,
+          },
+          circleStyle: {
+            weight: 1,
+            clickable: false,
+          },
+          icon: "fas fa-crosshairs",
+          metric: true,
+          strings: {
+            title: "Click for Your Location",
+            popup: "You're here. Accuracy {distance} {unit}",
+            outsideMapBoundsMsg: "Not available",
+          },
+          locateOptions: {
+            maxZoom: 16,
+            watch: true,
+            enableHighAccuracy: true,
+            maximumAge: 10000,
+            timeout: 10000,
+          },
+        })
+        .addTo(map);
+      /*Plugin Mouse Position Coordinate */
+      L.control
+        .mousePosition({
+          position: "bottomright",
+          separator: ",",
+          prefix: "Point Coodinate: ",
+        })
+        .addTo(map);
+
+      /*Plugin Measurement Tool */
+      var measureControl = new L.Control.Measure({
+        position: "topleft",
+        primaryLengthUnit: "meters",
+        secondaryLengthUnit: "kilometers",
+        primaryAreaUnit: "hectares",
+        secondaryAreaUnit: "sqmeters",
+        activeColor: "#FF0000",
+        completedColor: "#00FF00",
+      });
+      measureControl.addTo(map);
+
+      /*Plugin EasyPrint */
+      L.easyPrint({
+        title: "Print",
+      }).addTo(map);
+
+      /Plugin Routing/;
+      L.Routing.control({
+        waypoints: [
+          L.latLng(-7.774876989477508, 110.3746770621709),
+          L.latLng(-7.789865101510259, 110.37792578946565),
+        ],
+        routeWhileDragging: true,
+      }).addTo(map);
+
+      /* Layer Marker */
+      var addressPoints = [
+        [-7.765289979102765, 110.38039942489843, "RM Gudeg Yu Djum"],
+        [-7.766202461973196, 110.38220949531195, "RM Ayam Geprek Pak Wage"],
+        [-7.763203612730725, 110.38421513839128, "RM Padang Pergaulan"],
+        [-7.760607615104895, 110.38203856815007, "RM Yamie Panda"],
+        [
+          -7.769536207403599,
+          110.37654537968348,
+          "RM Waroeng Special Sambal 'SS' ",
+        ],
+        [-7.766846087892603, 110.3849822790511, "SGPC Bu Wiryo 1959"],
+        [-7.746875763159272, 110.39334283315524, "RM Nasi Bebek Mbak Desi"],
+        [-7.77571750841375, 110.39541310029071, "Nasi Ayam Geprek Bu Rum 1"],
+        [-7.770574775601521, 110.37666063217674, "Nasi Ayam Syurga GSP UGM"],
+        [
+          -7.76590170456482,
+          110.37953311805391,
+          "Tora Tora Restaurant (Japanese Cuisine)",
+        ],
+        [
+          -7.770745864478013,
+          110.37645689494063,
+          "Lesehan Tasik Malaya GSP UGM",
+        ],
+        [-7.771854900722059, 110.38315293499709, "Lesehan Prasojo"],
+        [-7.769436043273745, 110.3771333954632, "Seafood Pak Purwanto"],
+        [
+          -7.767217956696968,
+          110.38626402595435,
+          "Angkringan Pak Panut꧋ꦄꦁꦏꦿꦶꦔꦤ꧀ꦥꦏ꧀ꦥꦤꦸꦠ꧀",
+        ],
+        [-7.77288524587116, 110.3860535289959, "Warung Penyetan Bu Wid"],
+        [-7.6760442778649995, 110.41696857401088, "The Waroeng of Raminten"],
+        [-7.740122897118119, 110.37595845293437, "Ikan Bakar Cianjur"],
+        [-7.764832908967044, 110.39184534782358, "Seblak Pasta"],
+        [-7.667414998926412, 110.41831503650351, "Tongseng Pak Kribo"],
+        [-7.758795446467788, 110.38210301698193, "Warung Kebon Nasi Bakar"],
+        [-7.645835944168956, 110.42418074643948, "Warung OMAHKU"],
+        [
+          -7.741254045069731,
+          110.39132965281709,
+          "Sop Buntut Bu Menuk (seberang MSF)",
+        ],
+        [
+          -7.722802505804503,
+          110.29813452015055,
+          "Warung Bubur Wengi Mbak Watik",
+        ],
+        [
+          -7.756057419014296,
+          110.38218976552844,
+          "Rumah Makan Padang Sederhana Jogja",
+        ],
+        [-7.734354435005474, 110.39936393941002, "Sate Ratu Jogja"],
+        [-7.728996259937932, 110.40485710332949, "Tengkleng Gajah Jogja"],
+        [
+          -7.7174344895185065,
+          110.40899412988041,
+          "Warung Sop & Sate Sapi Pak Bayu",
+        ],
+        [-7.707993471587516, 110.41594641597338, "Pawon Mbah Gito"],
+        [-7.7120760997915, 110.43362753754475, "Pawon Mbah Muh Bakmi Jawa"],
+        [-7.705117533970104, 110.43712913942866, "Sabin by Seken Living"],
+        [-7.658359541773083, 110.40271461872986, "Warung Iciiik Iwiiir"],
+        [-7.658019281221031, 110.42777717911241, "Eriste Garden"],
+        [
+          -7.635646553589313,
+          110.5074280578154,
+          "Rumah Makan Basamo Masakan Padang",
+        ],
+        [-7.703326043610011, 110.44414579822501, "Joglo Bakso Pikul Enak"],
+        [-7.704107495821603, 110.36090612366577, "Jejamuran"],
+        [-7.694740606274593, 110.42754828883862, "Fransis Pizza"],
+        [-7.6562502702928, 110.4735394483717, "The Ugul - Ugul Kepurun"],
+        [-7.669743501858638, 110.35832047416424, "Warung Ngesellan"],
+        [-7.664182482926941, 110.33130526496849, "Joglo Jamal 17"],
+        [-7.659065324346771, 110.39713973713005, "Boyong Resto"],
+        [-7.646256209008382, 110.3859346140608, "Entok Slenget Kang Tanir"],
+        [-7.644877847119116, 110.37927657354176, "Ayam Kremes Sehati"],
+        [-7.624661140295276, 110.39858302343951, "Omah Partoredjan"],
+      ];
+      var markers = L.markerClusterGroup();
+      for (var i = 0; i < addressPoints.length; i++) {
+        var a = addressPoints[i];
+        var tittle = a[2];
+        var marker = L.marker(new L.LatLng(a[0], a[1]), {
+          title: tittle,
+        });
+        marker.bindPopup(title);
+        markers.addLayer(marker);
+      }
+      map.addLayer(markers);
+      // Function to determine the color based on the 'value' attribute
+      function getColor(value) {
+        return value > 75000
+          ? "#67000d"
+          : value > 50000
+          ? "#fb7050"
+          : value > 10
+          ? "#fff5f0"
+          : "#fff5f0";
+      }
+    </script>
+  </body>
+</html>
