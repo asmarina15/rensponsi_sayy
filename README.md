@@ -10,7 +10,42 @@ Komponen Pembangunan Produk : Penyusunan webGIS Makan Lur Makan mengintegrasikan
 
 Sumber Data : Google Maps, Data SHP Kabupaten Sleman
 
-link: https://asmarina15.github.io/pgweb-acara3/
+Website :
+
+https://sites.google.com/view/ramintenkaliurang/
+
+https://gudegyudjum.com/
+
+https://www.detik.com/jogja/kuliner/d-6840072/sate-ratu-kuliner-terkenal-di-jogja-harga-lokasi-dan-jam-buka
+
+https://www.tripadvisor.co.id/Restaurant_Review-g2304080-d7060197-Reviews-Rosella_Kitchen_by_Richie-Sleman_Sleman_District_Yogyakarta_Region_Java.html
+
+https://tripjogja.co.id/tengkleng-gajah/
+
+https://dilranirestaurant.co.id/
+
+https://menukuliner.net/
+
+https://www.tripadvisor.co.id/Restaurant_Review-g2304080-d1828715-Reviews-Jejamuran-Sleman_Sleman_District_Yogyakarta_Region_Java.html
 
 Gambar Komponen Penting :
-<img src="image/landing.png" width="150">
+
+Tampilan Muka
+
+<img src="image/ladingg.png" width="400">
+
+Map
+
+<img src="image/map.png" width="400">
+
+Database Koordinat
+
+<img src="image/coordinate.png" width="400">
+
+Info
+
+<img src="image/info.png" width="400">
+
+About
+
+<img src="image/about.png" width="400">
