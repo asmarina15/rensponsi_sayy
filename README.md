@@ -9,7 +9,8 @@ Deskripsi Produk : WebGIS Makan Lur Makan menyajikan informasi mengenai rekomend
 Komponen Pembangunan Produk : Penyusunan webGIS Makan Lur Makan mengintegrasikan beberapa komponen, seperti BootStrap untuk penyusunan GUI web menggunakan BootStrap berupa Blog, Leaflet JS untuk menampilkan peta yang memuat titik koordinat lokasi dari rumah makan di Sleman, dan Database yang disusun dengan PHPMyAdmin yang bertujuan untuk menampilkan titik koordinat lokasi beserta tabel dari titik koordinat lokasi tersebut. Selain itu, pembuatan webGIS Makan Lur Makan juga diintegrasikan dengan Google Maps API yang bertujuan untuk menampilkan lokasi langsung pada Google Maps.
 
 Sumber Data : Google Maps, Data SHP Kabupaten Sleman
+
 link: https://asmarina15.github.io/pgweb-acara3/
 
 Gambar Komponen Penting :
-<img src="image/ava lucu.jpg" width="150">
+<img src="image/landing.png" width="150">
